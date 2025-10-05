@@ -1,11 +1,11 @@
 cask "unirms-monitor" do
-  version "1.0.0"
-  sha256 "388f2f3b65b2d896d46d4c39626e4fb9b57f5fbd9ee0ce954c89c356dcedaa1e" # Will be updated when DMG is uploaded
+  version "1.0.1"
+  sha256 "644c6f72af6fe03d7059e49d9135153ae1fcc2be27c47b7b149d06ebd4bab138" # Will be updated when DMG is uploaded
 
-  url "https://github.com/adhiman2409/gomicroutils/releases/download/v#{version}/UNIRMS_Activity_Monitor_Installer.dmg"
+  url "https://github.com/adhiman2409/unirms-monitor/releases/download/v#{version}/UnirmsMonitor-#{version}.dmg"
   name "UNIRMS Activity Monitor"
   desc "Professional activity monitoring solution for UNIRMS"
-  homepage "https://github.com/adhiman2409/gomicroutils"
+  homepage "https://github.com/adhiman2409/unirms-monitor"
 
   app "UnirmsMonitor.app"
 
