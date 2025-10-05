@@ -9,22 +9,22 @@ cask "unirms-monitor" do
 
   app "UnirmsMonitor.app"
 
-  uninstall quit:   "com.unirms.activitymonitor",
-            launchctl: [
+  uninstall quit:      "com.unirms.activitymonitor",
+            launchctl:  [
               "com.unirms.activitymonitor",
               "com.unirms.activitymonitor.watchdog",
             ],
-            delete: [
+            script:     {
+              executable: "/bin/bash",
+              args:       ["-c", "rm -f ~/Library/Logs/unirms-activity-monitor*.log"],
+            },
+            delete:     [
               "/Applications/UnirmsMonitor.app",
               "/Library/LaunchDaemons/com.unirms.activitymonitor.plist",
               "/Library/LaunchDaemons/com.unirms.activitymonitor.watchdog.plist",
-            ],
-            script: {
-              executable: "/bin/bash",
-              args:       ["-c", "rm -f ~/Library/Logs/unirms-activity-monitor*.log"],
-            }
+            ]
 
-  zap trash: [
+  zap trash:  [
     "/Library/Logs/unirms-activity-monitor-error.log",
     "/Library/Logs/unirms-activity-monitor-watchdog-error.log",
     "/Library/Logs/unirms-activity-monitor-watchdog.log",
