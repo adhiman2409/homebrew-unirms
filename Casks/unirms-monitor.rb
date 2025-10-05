@@ -1,6 +1,6 @@
 cask "unirms-monitor" do
   version "1.0.2"
-  sha256 "057f8f40f5005934d86400073a023397dc8da235ca1015c43f9ff492478eef1c" # Will be updated when DMG is uploaded
+  sha256 "7f661b5dce88922b9f0cc89d011834663f8b69387454e168d6d17a9a00cdd5c2" # Will be updated when DMG is uploaded
 
   url "https://github.com/adhiman2409/unirms-monitor/releases/download/#{version}/UnirmsMonitor-#{version}.dmg"
   name "UNIRMS Activity Monitor"
@@ -8,6 +8,21 @@ cask "unirms-monitor" do
   homepage "https://github.com/adhiman2409/unirms-monitor"
 
   app "UnirmsMonitor.app"
+
+  postflight do
+    system_command "/bin/cp",
+                   args: ["#{staged_path}/com.unirms.activitymonitor.plist", "/Library/LaunchDaemons/"],
+                   sudo: true
+    system_command "/bin/cp",
+                   args: ["#{staged_path}/com.unirms.activitymonitor.watchdog.plist", "/Library/LaunchDaemons/"],
+                   sudo: true
+    system_command "/bin/launchctl",
+                   args: ["load", "/Library/LaunchDaemons/com.unirms.activitymonitor.plist"],
+                   sudo: true
+    system_command "/bin/launchctl",
+                   args: ["load", "/Library/LaunchDaemons/com.unirms.activitymonitor.watchdog.plist"],
+                   sudo: true
+  end
 
   uninstall launchctl: ["com.unirms.activitymonitor", "com.unirms.activitymonitor.watchdog"],
             quit:      "com.unirms.activitymonitor",
