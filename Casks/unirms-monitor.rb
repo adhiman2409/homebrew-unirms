@@ -9,11 +9,11 @@ cask "unirms-monitor" do
 
   app "UnirmsMonitor.app"
 
-  uninstall quit:       "com.unirms.activitymonitor",
-            launchctl:  [
+  uninstall launchctl:  [
               "com.unirms.activitymonitor",
               "com.unirms.activitymonitor.watchdog",
             ],
+            quit:       "com.unirms.activitymonitor",
             script:     {
               executable: "/bin/bash",
               args:       ["-c", "rm -f ~/Library/Logs/unirms-activity-monitor*.log"],
