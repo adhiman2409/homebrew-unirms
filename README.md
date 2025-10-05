@@ -36,4 +36,4 @@ brew uninstall --cask unirms-monitor
 ## Support
 
 For issues with the tap, please create an issue in this repository.
-For issues with the application itself, please visit the [main repository](https://github.com/adhiman2409/gomicroutils).
+For issues with the application itself, please visit the [main repository](https://github.com/adhiman2409/unirms-monitor).
