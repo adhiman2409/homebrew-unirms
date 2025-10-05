@@ -17,14 +17,15 @@ jobs:
     - name: Set up Homebrew
       run: |
         brew update
+        brew tap --custom-remote adhiman2409/homebrew-unirms file://$(pwd)
 
     - name: Test Cask syntax
       run: |
-        brew cask style Casks/*.rb
+        brew style --cask unirms-monitor
 
     - name: Test Cask audit
       run: |
-        brew audit --cask Casks/*.rb
+        brew audit --cask unirms-monitor
 
     - name: Test Cask installation (dry run)
       run: |
