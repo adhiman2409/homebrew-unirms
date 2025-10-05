@@ -9,7 +9,7 @@ cask "unirms-monitor" do
 
   app "UnirmsMonitor.app"
 
-  uninstall quit: "com.unirms.activitymonitor",
+  uninstall quit:   "com.unirms.activitymonitor",
             delete: [
               "/Applications/UnirmsMonitor.app",
               "/Library/LaunchDaemons/com.unirms.activitymonitor.plist",
@@ -17,14 +17,14 @@ cask "unirms-monitor" do
             ]
 
   zap trash: [
-    "~/Library/Application Support/com.unirms.activity.monitor",
-    "~/Library/Logs/unirms-activity-monitor.log",
-    "~/Library/Logs/unirms-activity-monitor-error.log",
-    "~/Library/Logs/unirms-activity-monitor-watchdog.log",
-    "~/Library/Logs/unirms-activity-monitor-watchdog-error.log",
-    "/Library/Logs/unirms-activity-monitor.log",
     "/Library/Logs/unirms-activity-monitor-error.log",
-    "/Library/Logs/unirms-activity-monitor-watchdog.log",
     "/Library/Logs/unirms-activity-monitor-watchdog-error.log",
+    "/Library/Logs/unirms-activity-monitor-watchdog.log",
+    "/Library/Logs/unirms-activity-monitor.log",
+    "~/Library/Application Support/com.unirms.activity.monitor",
+    "~/Library/Logs/unirms-activity-monitor-error.log",
+    "~/Library/Logs/unirms-activity-monitor-watchdog-error.log",
+    "~/Library/Logs/unirms-activity-monitor-watchdog.log",
+    "~/Library/Logs/unirms-activity-monitor.log",
   ]
 end
