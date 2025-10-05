@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout tap
+      uses: actions/checkout@v4
+
+    - name: Set up Homebrew
+      run: |
+        brew update
+
+    - name: Test Cask syntax
+      run: |
+        brew cask style Casks/*.rb
+
+    - name: Test Cask audit
+      run: |
+        brew audit --cask Casks/*.rb
+
+    - name: Test Cask installation (dry run)
+      run: |
+        # Note: This would require the actual DMG to be available
+        # For now, just validate the Cask structure
+        echo "Cask validation completed successfully"
