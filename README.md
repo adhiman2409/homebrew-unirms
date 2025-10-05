@@ -7,7 +7,7 @@ This tap provides the UNIRMS Activity Monitor application for macOS.
 First, tap this repository:
 
 ```bash
-brew tap adhiman2409/unirms
+brew tap adhiman2409/homebrew-unirms 
 ```
 
 Then install the application:
