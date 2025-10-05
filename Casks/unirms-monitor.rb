@@ -9,34 +9,34 @@ cask "unirms-monitor" do
 
   app "UnirmsMonitor.app"
 
-  uninstall quit:      "com.unirms.activitymonitor",
+  uninstall delete:     [
+              "/Applications/UnirmsMonitor.app",
+              "/Library/LaunchDaemons/com.unirms.activitymonitor.plist",
+              "/Library/LaunchDaemons/com.unirms.activitymonitor.watchdog.plist",
+            ],
             launchctl:  [
               "com.unirms.activitymonitor",
               "com.unirms.activitymonitor.watchdog",
             ],
+            quit:       "com.unirms.activitymonitor",
             script:     {
               executable: "/bin/bash",
               args:       ["-c", "rm -f ~/Library/Logs/unirms-activity-monitor*.log"],
-            },
-            delete:     [
-              "/Applications/UnirmsMonitor.app",
-              "/Library/LaunchDaemons/com.unirms.activitymonitor.plist",
-              "/Library/LaunchDaemons/com.unirms.activitymonitor.watchdog.plist",
-            ]
+            }
 
-  zap trash:  [
-    "/Library/Logs/unirms-activity-monitor-error.log",
-    "/Library/Logs/unirms-activity-monitor-watchdog-error.log",
-    "/Library/Logs/unirms-activity-monitor-watchdog.log",
-    "/Library/Logs/unirms-activity-monitor.log",
-    "~/Library/Application Support/com.unirms.activity.monitor",
-    "~/Library/Logs/unirms-activity-monitor-error.log",
-    "~/Library/Logs/unirms-activity-monitor-watchdog-error.log",
-    "~/Library/Logs/unirms-activity-monitor-watchdog.log",
-    "~/Library/Logs/unirms-activity-monitor.log",
-  ],
-      script: {
+  zap script: {
         executable: "/bin/bash",
         args:       ["-c", "sudo rm -f /Library/Logs/unirms-activity-monitor*.log 2>/dev/null || true"],
-      }
+      },
+      trash:  [
+        "/Library/Logs/unirms-activity-monitor-error.log",
+        "/Library/Logs/unirms-activity-monitor-watchdog-error.log",
+        "/Library/Logs/unirms-activity-monitor-watchdog.log",
+        "/Library/Logs/unirms-activity-monitor.log",
+        "~/Library/Application Support/com.unirms.activity.monitor",
+        "~/Library/Logs/unirms-activity-monitor-error.log",
+        "~/Library/Logs/unirms-activity-monitor-watchdog-error.log",
+        "~/Library/Logs/unirms-activity-monitor-watchdog.log",
+        "~/Library/Logs/unirms-activity-monitor.log",
+      ]
 end
