@@ -10,11 +10,19 @@ cask "unirms-monitor" do
   app "UnirmsMonitor.app"
 
   uninstall quit:   "com.unirms.activitymonitor",
+            launchctl: [
+              "com.unirms.activitymonitor",
+              "com.unirms.activitymonitor.watchdog",
+            ],
             delete: [
               "/Applications/UnirmsMonitor.app",
               "/Library/LaunchDaemons/com.unirms.activitymonitor.plist",
               "/Library/LaunchDaemons/com.unirms.activitymonitor.watchdog.plist",
-            ]
+            ],
+            script: {
+              executable: "/bin/bash",
+              args:       ["-c", "rm -f ~/Library/Logs/unirms-activity-monitor*.log"],
+            }
 
   zap trash: [
     "/Library/Logs/unirms-activity-monitor-error.log",
@@ -26,5 +34,9 @@ cask "unirms-monitor" do
     "~/Library/Logs/unirms-activity-monitor-watchdog-error.log",
     "~/Library/Logs/unirms-activity-monitor-watchdog.log",
     "~/Library/Logs/unirms-activity-monitor.log",
-  ]
+  ],
+      script: {
+        executable: "/bin/bash",
+        args:       ["-c", "sudo rm -f /Library/Logs/unirms-activity-monitor*.log 2>/dev/null || true"],
+      }
 end
