@@ -1,6 +1,6 @@
 cask "unirms-monitor" do
-  version "1.0.3"
-  sha256 "88d8e0c4241a7b87e460e8e177970d163ab3046209b9cfa2d851459b3ede1b9e" # Will be updated when DMG is uploaded
+  version "1.0.4"
+  sha256 "8ba66de6dd2e16ea5bfb24035b43f2669166b4929e6855c87ff4fd94a4fe7d76" # Will be updated when DMG is uploaded
 
   url "https://github.com/adhiman2409/unirms-monitor/releases/download/#{version}/UnirmsMonitor-#{version}.dmg"
   name "UNIRMS Activity Monitor"
